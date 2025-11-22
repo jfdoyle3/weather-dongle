@@ -28,3 +28,6 @@ Thumbs.db
 .vscode/*.json
 !.vscode/settings.json
 !.vscode/extensions.json
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/ipch
