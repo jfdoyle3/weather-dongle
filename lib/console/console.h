@@ -13,4 +13,6 @@ void conTemp(float temperatureF,
              float real_altitude_meters
             );
 
+void console(String message);
+
 #endif

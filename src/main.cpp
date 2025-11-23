@@ -1,11 +1,14 @@
 #include <Wire.h>
+#include <Arduino.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include "unitscalculator.h"
 #include "console.h"
+#include "sensor.h"
 
 // Create the sensor object
 Adafruit_BME280 bme; // I2C
+// Adafruit_BME280 bme_sensor_global;
 
 // Define your custom pins
 #define PIN_SDA 43
@@ -20,17 +23,19 @@ void setup() {
 
   // Initialise I2C on the chosen pins
   Wire.begin(PIN_SDA, PIN_SCL);
+  // Adafruit_BME280 initialized_sensor_ref = initialize_bme_sensor(bme_sensor_global);
 
   // Try to initialise the sensor
   if (!bme.begin(0x76)) {          // 0x76 is the default address for many BME280 modules
     // Some boards use 0x77 – try that if 0x76 fails
     if (!bme.begin(0x77)) {
-      Serial.println(F("Could not find a valid BME280 sensor, check wiring!"));
+      console(F("Could not find a valid BME280 sensor, check wiring!"));
       while (1) delay(10);
     }
   }
 
-  Serial.println(F("BME280 initialized!"));
+  console(F("BME280 initialized!"));
+
 }
 
 void loop() {
@@ -63,4 +68,3 @@ void loop() {
 
   delay(2000); // update every 2 seconds
 }
-

@@ -1,6 +1,5 @@
 #include "console.h"
 
-
 void conTemp(float temperatureF,
              float temperatureC,
              float humidity,
@@ -18,9 +17,7 @@ void conTemp(float temperatureF,
   Serial.print("Pres: "); Serial.print(pressure);   Serial.println(" hPa");
   Serial.print("Alt: "); Serial.print(altitude); Serial.println(" m");
   Serial.println(">>---------------------------------------<<");
-
   Serial.println(">>-------> Real Pressure Calculated <------------<<");
-
   Serial.print(F("Computed sea-level pressure : ")); Serial.print(seaLevel_hPa, 2); Serial.print(F(" hPa\n"));
   Serial.print(F("Altitude (recalc) : ")); Serial.print(real_altitude_feet, 1); Serial.println(F(" ft"));
   Serial.print(F("Altitude (recalc) : ")); Serial.print(real_altitude_meters, 1); Serial.println(F(" m"));
@@ -28,7 +25,10 @@ void conTemp(float temperatureF,
   Serial.println("================= End =====================");
 }
 
-
+void console(String message)
+{
+  Serial.println(message);
+}
 
 
 
